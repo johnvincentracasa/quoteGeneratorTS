@@ -9,20 +9,23 @@ type IQuote = {
   author: string;
 };
 
-const COLOR = [
-  "#D8A7B1",
-  "#B6E2D3",
-  "#FAE8E0",
-  "#EF7C8E",
-  "#887BB0",
-  "#85D2D0",
-  "#F4B9B8",
-  "#FFF4BD",
+const COLOR: string[] = [
+  "#F8AFA6",
+  "#116530",
+  "#A16AE8",
+  "#E43D40",
+  "#4297A0",
+  "#2F5061",
+  "#94C973",
+  "#E1C340",
 ];
+
+const whiteColor: string = "white";
 
 const App = () => {
   const [quotes, setQuotes] = useState<IQuote[] | null>(null);
   const [index, setIndex] = useState<number>(0);
+  const [colorIndex, setColorIndex] = useState<number>(0);
 
   useEffect(() => {
     const fetchQuotes: () => Promise<void> = async () => {
@@ -42,19 +45,28 @@ const App = () => {
     if (quotes) {
       setIndex(Math.floor(Math.random() * quotes.length));
     }
+
+    handleNewColor();
   };
 
-  const handleNewColor = () => {};
+  const handleNewColor: () => void = () => {
+    setColorIndex(Math.floor(Math.random() * COLOR.length));
+  };
 
-  let quote = quotes ? quotes[index].quote : "";
+  let quote: string = quotes ? quotes[index].quote : "";
 
-  let author = quotes ? quotes[index].author : "";
+  let author: string = quotes ? quotes[index].author : "";
+
+  let currentColor: string = COLOR[colorIndex];
 
   return (
-    <div className="app">
-      <div className={`quote__container`} id="quote-box">
+    <div
+      className="app"
+      style={{ background: currentColor, color: currentColor }}
+    >
+      <div className="quote__container" id="quote-box">
         <div className="quote__preview">
-          <h1 id="text">" {quote} "</h1>
+          <h1 id="text">" {quote}"</h1>
           <h5 id="author">-- {author}</h5>
         </div>
 
@@ -69,9 +81,11 @@ const App = () => {
               rel="noopener noreferrer"
               style={{ marginRight: "5px" }}
             >
-              <button className="fa fa-twitter" aria-hidden="true">
-                {" "}
-              </button>
+              <button
+                className="fa fa-twitter"
+                style={{ background: currentColor, color: whiteColor }}
+                aria-hidden="true"
+              ></button>
             </a>
 
             <a
@@ -79,20 +93,31 @@ const App = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <button className="fa fa-facebook" aria-hidden="true"></button>
+              <button
+                className="fa fa-facebook"
+                style={{ background: currentColor, color: whiteColor }}
+                aria-hidden="true"
+              ></button>
             </a>
           </div>
           <div className="btn__fetchNewQuote">
-            <button id="new-quote" onClick={handleNewQuote}>
-              {" "}
-              New quote
+            <button
+              id="new-quote"
+              onClick={handleNewQuote}
+              style={{
+                background: currentColor,
+                fontWeight: 600,
+                color: whiteColor,
+              }}
+            >
+              New Quote
             </button>
           </div>
         </div>
       </div>
 
       <footer className="quote__footer">
-        <h6>by jv_racasa</h6>
+        <h6 style={{ color: whiteColor }}>by jv_racasa</h6>
       </footer>
     </div>
   );

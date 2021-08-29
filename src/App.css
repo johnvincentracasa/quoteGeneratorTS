@@ -21,7 +21,7 @@ html {
   line-height: 1.3;
   font-family: "Satisfy", cursive;
   font-weight: 300;
-  background: rgb(215, 250, 221);
+  transition: all ease-in-out 500ms;
 }
 h1,
 h2,
@@ -52,26 +52,26 @@ button {
 }
 
 .quote__container {
+  margin-top: 6rem;
+  border-radius: 5px;
   width: 34.75rem;
   min-height: 17.8rem;
-  background: grey;
-  margin-top: 25vh;
+  background: rgb(230, 230, 230);
   margin-left: auto;
   margin-right: auto;
   padding: 2rem;
 }
 
 .quote__preview {
-  padding: 2rem;
+  padding: 1.5rem 0;
   box-sizing: inherit;
   min-height: 5rem;
   text-align: center;
-  background: coral;
 }
 
 .quote__preview h5 {
   text-align: end;
-  padding: 1rem;
+  padding: 0.2rem;
 }
 
 .quote__btn--container {
@@ -81,4 +81,5 @@ button {
 
 .quote__footer {
   text-align: center;
+  margin-top: 0.5rem;
 }
