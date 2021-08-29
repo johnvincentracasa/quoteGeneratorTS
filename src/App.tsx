@@ -52,15 +52,16 @@ const App = () => {
 
   return (
     <div className="app">
-      <div className={`quote__container`}>
+      <div className={`quote__container`} id="quote-box">
         <div className="quote__preview">
-          <h2>" {quote} "</h2>
-          <h5>-- {author}</h5>
+          <h1 id="text">" {quote} "</h1>
+          <h5 id="author">-- {author}</h5>
         </div>
 
         <div className="quote__btn--container">
           <div className="btn__share">
             <a
+              id="tweet-quote"
               href={`https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=${encodeURIComponent(
                 '"' + quote + '" ' + author
               )}`}
@@ -73,18 +74,26 @@ const App = () => {
               </button>
             </a>
 
-            <a>
+            <a
+              href="https://www.facebook.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <button className="fa fa-facebook" aria-hidden="true"></button>
             </a>
           </div>
           <div className="btn__fetchNewQuote">
-            <button onClick={handleNewQuote}> New quote</button>
+            <button id="new-quote" onClick={handleNewQuote}>
+              {" "}
+              New quote
+            </button>
           </div>
         </div>
-        <footer className="quote__footer">
-          <h6>by jv_racasa</h6>
-        </footer>
       </div>
+
+      <footer className="quote__footer">
+        <h6>by jv_racasa</h6>
+      </footer>
     </div>
   );
 };
